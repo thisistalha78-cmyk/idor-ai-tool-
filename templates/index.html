@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDOR AI Analyzer</title>
+    <style>
+        body { font-family: Arial; background:#111; color:#eee; padding:40px; }
+        input, textarea, button {
+            width:100%; padding:10px; margin-top:10px;
+        }
+        button { background:#0f62fe; color:white; border:none; }
+        pre { background:#222; padding:15px; white-space:pre-wrap; }
+    </style>
+</head>
+<body>
+
+<h2>IDOR AI Analyzer (Bug Bounty Safe)</h2>
+
+<form method="post" action="/scan">
+    <label>Target URL (single endpoint only)</label>
+    <input name="target_url" placeholder="https://example.com/api/orders/123" required>
+
+    <label>Auth Cookie (optional)</label>
+    <textarea name="cookie" placeholder="session=abc123"></textarea>
+
+    <button type="submit">START ANALYSIS</button>
+</form>
+
+{% if result %}
+<h3>Result</h3>
+<pre>{{ result }}</pre>
+
+{% if url_a %}
+<p>Original URL: {{ url_a }}</p>
+<p>Modified URL: {{ url_b }}</p>
+{% endif %}
+{% endif %}
+
+<p style="color:#888;font-size:12px;margin-top:40px;">
+⚠️ Use only on in-scope targets. One request at a time. Manual verification required.
+</p>
+
+</body>
+</html>
