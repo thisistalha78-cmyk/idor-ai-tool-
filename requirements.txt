@@ -3,3 +3,4 @@ uvicorn
 requests
 jinja2
 python-dotenv
+python-multipart
